@@ -35,11 +35,11 @@ void find(char *path, char *filename)
 
     strcpy(buf, path);
     p = buf+strlen(buf);
-    *p++ = '/';
-    while(read(fd, &de, sizeof(de)) == sizeof(de)){
+    *p++ = '/';//p指向最后一个'/'之后
+    while(read(fd, &de, sizeof(de)) == sizeof(de)){ //当 read() 读完目录中的所有条目后，循环终止，函数返回
         if(de.inum == 0)
             continue;
-        memmove(p, de.name, DIRSIZ);
+        memmove(p, de.name, DIRSIZ);//添加路径名称
         p[DIRSIZ] = 0;
         if(stat(buf, &st) < 0){
             printf("find: cannot stat %s\n", buf);
