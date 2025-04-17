@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     //printf("first input: %c\n%c",buf[0],buf[1]);
 
 
-    int xargc=0; // run new argument
+    int xargc=0; // gain new argument,shanqu xargs
     char *xargv[MAXARG];
     for(int i=1;i<argc;i++){
         //printf("%d %s\n",i,argv[i]);
