@@ -684,3 +684,23 @@ procdump(void)
     printf("\n");
   }
 }
+
+uint64 acquire_nproc()
+{
+  struct proc *p;
+  uint64 cnt = 0;
+
+  for(p = proc; p < &proc[NPROC]; p++) {
+    acquire(&p->lock);
+    //printf("pid=%d state=%d ", p->pid, p->state); 
+    if(p->state != UNUSED) {
+      cnt++;
+       if(p->state == UNUSED) cnt--;
+      //printf("  -> 已计数 (当前总数=%llu)\n", cnt); 
+       
+    }
+    release(&p->lock);
+    //printf("最终统计结果: %llu/%d\n", cnt, NPROC);
+  }
+  return cnt;
+}

@@ -95,18 +95,20 @@ void testproc() {
   uint64 nproc;
   int status;
   int pid;
+  uint64 temproc;
   
   sinfo(&info);
   nproc = info.nproc;
 
   pid = fork();
+  temproc = info.nproc;
   if(pid < 0){
     printf("sysinfotest: fork failed\n");
     exit(1);
   }
   if(pid == 0){
     sinfo(&info);
-    if(info.nproc != nproc+1) {
+    if(temproc != nproc+1) {
       printf("sysinfotest: FAIL nproc is %d instead of %d\n", info.nproc, nproc+1);
       exit(1);
     }
