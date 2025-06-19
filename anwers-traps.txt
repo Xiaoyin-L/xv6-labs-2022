@@ -1,0 +1,5 @@
+question 1 : a0~a7. 13 is stored by a2.
+question 2 : there is none. g(x) is inlined within f(x), f(x) is inlined within main.
+question 3 : 0x64a.   (jalr	1562(ra)):jalr ability: store pc+4 --> ra regisiter && jumping $ra+1562 to running
+question 4 : HE110 World.  i ---> 0x726c6400, 57616 is stable.
+question 5 : y的值不是固定的，取决于函数调用那一刻的寄存器a2的值，这里是1.
