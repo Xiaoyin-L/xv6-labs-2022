@@ -63,6 +63,11 @@ void            ramdiskrw(struct buf*);
 void*           kalloc(void);
 void            kfree(void *);
 void            kinit(void);
+int             kref_cnt(void *);
+int             kaddrefcnt(void*); 
+int             is_cow_fault(pagetable_t, uint64);
+void*             cow_allocate(pagetable_t, uint64);
+
 
 // log.c
 void            initlog(int, struct superblock*);
