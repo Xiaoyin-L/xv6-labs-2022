@@ -399,7 +399,7 @@ wait(uint64 addr)
   for(;;){
     // Scan through table looking for exited children.
     havekids = 0;
-    for(pp = proc; pp < &proc[NPROC]; pp++){
+    for(pp = proc; pp < &proc[NPROC]; pp++){ //proc 通常是一个 全局的进程表（process table）的数组，它存储了系统中所有进程的控制块struct proc
       if(pp->parent == p){
         // make sure the child isn't still in exit() or swtch().
         acquire(&pp->lock);
